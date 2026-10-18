@@ -5,5 +5,6 @@
   "author": {
     "name": "Firedrill"
   },
-  "homepage": "https://firedrill.run"
+  "homepage": "https://firedrill.run",
+  "repository": "https://github.com/firedrill-tools/firedrill-skills"
 }

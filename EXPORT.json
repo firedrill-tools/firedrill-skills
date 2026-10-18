@@ -4,9 +4,9 @@
   "version": "2.0.0-alpha.9",
   "artifact": {
     "filename": "firedrill-agent-plugin-2.0.0-alpha.9.zip",
-    "sha256": "0d78ef4b0150db190d1ff14ec948d730b4353d4904bb8eed73deb87b2ac3cc79",
-    "bytes": 51877,
-    "manifestSha256": "694c46f1dd153d6220a90553c24adb1ddce1b449057524481105f6c983dade4e"
+    "sha256": "3643ca23ce5c13b749971cc2ddf75812f748a99d5aa79387efc6a0ae04852a7f",
+    "bytes": 54094,
+    "manifestSha256": "c33b12610568ffddc5ea9f8780865ef8b0965ef98dc065d51023c31535ec279d"
   },
   "files": [
     {
@@ -21,8 +21,8 @@
     },
     {
       "path": ".claude-plugin/plugin.json",
-      "bytes": 257,
-      "sha256": "8dd2cee1e45e12fe421f368b43b7b234fce7dcc12ec38203b8ee1ba7f79982de"
+      "bytes": 328,
+      "sha256": "ebb288d5e7ae75a554137ac139c788a3f1f0d8c763838705f7573d8a252657c1"
     },
     {
       "path": ".codex-plugin/plugin.json",
@@ -36,8 +36,8 @@
     },
     {
       "path": ".cursor-plugin/plugin.json",
-      "bytes": 282,
-      "sha256": "cca70958fbdf9c435c3215b34ee6942bcc6b53c87c8ce978486672ebb109c386"
+      "bytes": 353,
+      "sha256": "74117a8159cf2ff697e70f950da6d7dc1648405b22dac388716aa31878699582"
     },
     {
       "path": ".gitignore",
@@ -146,11 +146,11 @@
     },
     {
       "path": "tooling/package.mjs",
-      "bytes": 11319,
-      "sha256": "0e7476949e416f44b622b27481cbeec1345ef06b0f6d7dab9d05527685ca1143"
+      "bytes": 11580,
+      "sha256": "fd71dbfca672110b8148673961f77da7f5a3368e0011e36e1f5b75c0b7c66bfe"
     }
   ],
-  "sourceSnapshotSha256": "e7e672eb95be675bdd366c14a2b12193252ae116825c610cee9b3e4a9bcafc0a",
+  "sourceSnapshotSha256": "9349d7fe356770eb0274f248c149ea5c56300fb5ca948e8aaf4b937dcd041236",
   "boundary": "Client-only source export. No credentials, private runtime, service, database or repository history. Build/packaging construction is not runtime qualification.",
   "published": false,
   "listed": false

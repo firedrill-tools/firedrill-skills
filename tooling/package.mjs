@@ -53,9 +53,9 @@ put("plugins/firedrill/.codex-plugin/plugin.json", json({ name: manifest.name, v
   author: { name: "Firedrill" }, skills: "./skills/", interface: manifest.extensions["com.openai"].interface,
   requires_local_executor: manifest.extensions["com.openai"].requires_local_executor === true }));
 put("plugins/firedrill/.claude-plugin/plugin.json", json({ name: manifest.name, version: manifest.version, description: manifest.description,
-  author: { name: "Firedrill" }, homepage: "https://firedrill.run" }));
+  author: { name: "Firedrill" }, homepage: "https://firedrill.run", repository: "https://github.com/firedrill-tools/firedrill-skills" }));
 put("plugins/firedrill/.cursor-plugin/plugin.json", json({ name: manifest.name, version: manifest.version, description: manifest.description,
-  author: { name: "Firedrill" }, homepage: "https://firedrill.run", skills: "./skills/" }));
+  author: { name: "Firedrill" }, homepage: "https://firedrill.run", repository: "https://github.com/firedrill-tools/firedrill-skills", skills: "./skills/" }));
 put("plugins/firedrill/kimi.plugin.json", json({ name: manifest.name, version: manifest.version, description: manifest.description,
   author: { name: "Firedrill" }, homepage: "https://firedrill.run", skills: "./skills/",
   interface: { displayName: "Firedrill", shortDescription: "Simulate agents and inspect retained evidence", developerName: "Firedrill" } }));
@@ -85,6 +85,9 @@ for (const skill of skills) {
   const target = `plugins/firedrill/skills/${skill}/LICENSE.md`;
   if (!files.has(target)) put(target, read(licensePath));
 }
+put("plugins/firedrill/README.md", read(join(inputRoot, inputRoot === root ? "README.md" : "distribution/SKILLS_README.md")));
+put("plugins/firedrill/LICENSE.md", read(licensePath));
+put("plugins/firedrill/skills/LICENSE.md", read(licensePath));
 // Resolve the actual packaged relative references, including sibling skill refs.
 // No private checkout files or dangling source-only guides enter the plugin.
 for (const [path] of files) if (path.endsWith(".md")) {
@@ -96,8 +99,6 @@ for (const [path] of files) if (path.endsWith(".md")) {
     if (!inside(join(stage, "plugins/firedrill"), resolved) || !files.has(normalized(relative(stage, resolved)))) fail(`unpackaged instruction reference in ${path}`);
   }
 }
-put("plugins/firedrill/LICENSE.md", read(licensePath));
-put("plugins/firedrill/skills/LICENSE.md", read(licensePath));
 put(".agents/plugins/marketplace.json", json({ name: "firedrill-local", interface: { displayName: "Firedrill" },
   plugins: [{ name: "firedrill", source: { source: "local", path: "./plugins/firedrill" },
     policy: { installation: "AVAILABLE", authentication: "ON_INSTALL" }, category: "Productivity" }] }));
