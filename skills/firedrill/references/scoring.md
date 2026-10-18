@@ -12,7 +12,8 @@ require an explicit finite numeric expected value. Preview rejects malformed
 definitions before target execution; unavailable evidence is not known absence.
 
 Observation-only work needs no rubric. Add one when the user wants a quality
-assessment and authorizes its separate platform evaluator budget. This example
+assessment. Firedrill configures its evaluator server-side; the customer's agent
+keeps its own inference credentials and accounting. This example
 reuses the archive's ordinary-CI uppercase renderer: a real deterministic command,
 not an AI agent or a promised passing score. It renders supplied notice text; it
 does not reason about the task. Replace that adapter with your actual application
@@ -60,7 +61,7 @@ variation. The five anchors are levels0 through4, not probabilities.
   "repetitions": 3,
   "concurrency": 1,
   "limits": {"timeoutMs": 10000, "maxRuns": 3, "maxOutputBytes": 4096},
-  "gate": {"requireCompleted": true, "requireExactChecks": true, "minimumLevels": {"facts": 3}}
+  "gate": {"requireCompleted": true, "requireExactChecks": true, "minimumScores": {"facts": 3}}
 }
 ```
 
@@ -79,6 +80,64 @@ known requirement already blocks it; required exact checks and completion still
 apply independently. Pending assessment remains pending. Keep all three trials, including
 failed/interrupted/unassessed counts; do not select only the best score.
 
+### Jev semantic scores
+
+For an assessed Jev dimension, read `providerScore.score` on the authored 0–4
+scale. It may be fractional, and `level` remains null: no ordinal conversion is
+implied. `state: assessed` with that provider score is not missing evidence.
+Equivalent correct wording can receive comparable scores. Inspect the saved
+anchors and actual observations, not an exact reference-string comparison.
+Jev returns structured scores and distributions, not a written explanation or
+selected citations; supplied event references identify the scoring context.
+Provider-reported confidence is not a calibrated probability that this agent is
+correct. If `state` is `not_assessable`, a returned diagnostic provider value is
+not an accepted quality score.
+
+The gate above also requires the `facts` dimension's accepted native score to be
+at least 3 on its authored 0–4 scale. Use `gate.minimumScores` for fractional Jev
+thresholds, including non-integers such as 3.5. A low accepted score blocks the
+gate; a missing, pending or unassessable required score cannot satisfy it and is
+inconclusive unless another known requirement already blocks the gate. Scores
+are never rounded to ordinal levels. Omit `minimumScores` when quality should be
+observed rather than gated; omit the whole gate when no CI decision is wanted.
+
+Authored `minimumLevels` and `weighted_mean_ordinal` composites still require
+ordinal levels; they do not convert a Jev fractional score and remain
+inconclusive/unavailable where that required ordinal evidence is absent. Report
+semantic quality separately rather than labelling a low score an execution error.
+
+Batch summaries retain compatible Jev `providerScores` count, median, mean and
+range separately from ordinal histograms. Show the denominator and all missing,
+interrupted and not-assessable trials. Do not pool different evaluator settings,
+rubrics or selected populations into one apparent benchmark.
+
+### Recommend which proposed scenarios to run
+
+Draft candidate scenario objects from the actual application, its dependency
+seams and the user's question. Then optionally ask Firedrill to prioritize them:
+
+```sh
+firedrill scenarios recommend CANDIDATES.json --criteria CRITERIA.json --context CONTEXT.txt --operation-key SAVED_KEY --json --non-interactive
+firedrill scenarios recommendation --operation-key SAVED_KEY --json --non-interactive
+```
+
+`CANDIDATES.json` is an array of scenario objects, not a batch recipe.
+`CRITERIA.json` is an array of `{id,name,instructions,anchors}`; each `anchors`
+array declares five `{level,description}` entries in order 0–4. Choose criteria
+appropriate to the user's purpose, such as relevance, behavioral coverage or
+diagnostic value; do not make defect finding mandatory. Context is optional and
+should contain only relevant authorized facts, never credentials or unrelated
+source. This request may send those supplied facts to the platform evaluator.
+
+With operator MCP, use `firedrill_recommend_scenarios`; recover/read through
+`firedrill_scenario_recommendation`. Both use the selected project/environment.
+Persist the operation key before submission. A pending response is not a result;
+read the same ID/key until settled, without resubmitting new keys. Rankings are
+an explicitly equal-weighted index of assessed criteria, not success
+probabilities, proof of complete coverage, saved tests or target executions.
+Candidates return unchanged. Select deliberately and put them into the normal
+simulation recipe; recommendation alone never launches the user's application.
+
 Author applicability before execution. Explicit dimension `applicability` or
 `missingEvidence` requires rubric
 `"policyVersion": "2026-10-15-assessment.1"`; omission means applicable.
@@ -88,7 +147,7 @@ The result is `not_applicable`/`null`, not missing evidence, a numeric grade or 
 grader-chosen exemption. `"missingEvidence": "not_assessable"` is the only
 supported missing-data policy. Missing/unsupported evidence stays
 `not_assessable`/`null`; never exempt a criterion merely to hide poor or absent
-evidence. An excluded criterion cannot satisfy a required `minimumLevels` entry:
+evidence. An excluded criterion cannot satisfy a required `minimumScores` or `minimumLevels` entry:
 the gate stays inconclusive unless another known requirement blocks it. Other
 dimensions are not reweighted. Changes create a different pinned rubric, not a
 rewrite of history.
