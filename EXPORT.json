@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "2026-10-18-agent-repository-export.1",
+  "kind": "skills",
+  "version": "2.0.0-alpha.9",
+  "artifact": {
+    "filename": "firedrill-agent-plugin-2.0.0-alpha.9.zip",
+    "sha256": "0d78ef4b0150db190d1ff14ec948d730b4353d4904bb8eed73deb87b2ac3cc79",
+    "bytes": 51877,
+    "manifestSha256": "694c46f1dd153d6220a90553c24adb1ddce1b449057524481105f6c983dade4e"
+  },
+  "files": [
+    {
+      "path": ".agents/plugins/marketplace.json",
+      "bytes": 349,
+      "sha256": "8fae60d00995a52f770001fd5d4e0f7490ac213e0ce1e213122a401ff071c3c9"
+    },
+    {
+      "path": ".claude-plugin/marketplace.json",
+      "bytes": 271,
+      "sha256": "ab6be4a5069ff8006792aa41190840fbf4624a42e267a5e6f88599b78fa1675a"
+    },
+    {
+      "path": ".claude-plugin/plugin.json",
+      "bytes": 257,
+      "sha256": "8dd2cee1e45e12fe421f368b43b7b234fce7dcc12ec38203b8ee1ba7f79982de"
+    },
+    {
+      "path": ".codex-plugin/plugin.json",
+      "bytes": 1132,
+      "sha256": "fa4f52e4a20f2f4352d10ea882b9f62b3c2aec35805d6abcbf682509edb33db4"
+    },
+    {
+      "path": ".cursor-plugin/marketplace.json",
+      "bytes": 271,
+      "sha256": "ab6be4a5069ff8006792aa41190840fbf4624a42e267a5e6f88599b78fa1675a"
+    },
+    {
+      "path": ".cursor-plugin/plugin.json",
+      "bytes": 282,
+      "sha256": "cca70958fbdf9c435c3215b34ee6942bcc6b53c87c8ce978486672ebb109c386"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 14,
+      "sha256": "f9be3e084c2aa31b3ce170a55125803ad7ab6e8725c393f70ede2fca1b978b54"
+    },
+    {
+      "path": "assets/firedrill-icon.svg",
+      "bytes": 709,
+      "sha256": "0adc1251b96fd3abfc5ada16fdab1c2207bd2e2c4a3b2b06a5aeffb114a6ca5e"
+    },
+    {
+      "path": "kimi-marketplace.json",
+      "bytes": 133,
+      "sha256": "cb1533ab2a8ad42884597aacc617643fedb533e51ecc117a7b71ec05640fd0e0"
+    },
+    {
+      "path": "kimi.plugin.json",
+      "bytes": 442,
+      "sha256": "22f3be27decc2dccfec6da04a8eef1ece348bacc5b9ffbee88a91a6c4133c7ac"
+    },
+    {
+      "path": "LICENSE.md",
+      "bytes": 1344,
+      "sha256": "0be3d0c9c3055dfa2964a6538d8c63a40c1431fdb2959e8c71ea5d5db31aa078"
+    },
+    {
+      "path": "plugin.json",
+      "bytes": 1329,
+      "sha256": "61f90206ab274266b6e3ffba2aa7b6c241e10c73f9683c817a1274f04e246ca5"
+    },
+    {
+      "path": "PLUGIN.md",
+      "bytes": 6748,
+      "sha256": "23fdab32a4947a10a28aa7ed2dc4983b34eeae02c4dd21b6f8c239d42ecbb5f9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4204,
+      "sha256": "57ed5242c7f391005e29757f83ba30114c1f9627463ad659632879993e81a45e"
+    },
+    {
+      "path": "skills/firedrill-service-authoring/agents/openai.yaml",
+      "bytes": 258,
+      "sha256": "eac9e72d35bbb2ebaea90fe779d673be97188184b7dfc72df672785ca0c05aa9"
+    },
+    {
+      "path": "skills/firedrill-service-authoring/LICENSE.md",
+      "bytes": 1344,
+      "sha256": "0be3d0c9c3055dfa2964a6538d8c63a40c1431fdb2959e8c71ea5d5db31aa078"
+    },
+    {
+      "path": "skills/firedrill-service-authoring/references/authoring.md",
+      "bytes": 12495,
+      "sha256": "26e738f32ec1443d979b2b8cbdd33f07e434ba724495ff4192cc484195b330ec"
+    },
+    {
+      "path": "skills/firedrill-service-authoring/references/services.md",
+      "bytes": 12674,
+      "sha256": "283b102d84a7111bfa6c57a1cf026bbe6e8652ea7666b780f833908a1b3bdf2c"
+    },
+    {
+      "path": "skills/firedrill-service-authoring/SKILL.md",
+      "bytes": 2597,
+      "sha256": "7da415297ba2737a9f75a2666b3b16970aedf5caae8dec3eae6a9fca66ab92a3"
+    },
+    {
+      "path": "skills/firedrill/agents/openai.yaml",
+      "bytes": 224,
+      "sha256": "c4fc6be2af474528b86e0e824b3dbc2ffcb13b653acdde5287132a38d3805d74"
+    },
+    {
+      "path": "skills/firedrill/LICENSE.md",
+      "bytes": 1344,
+      "sha256": "0be3d0c9c3055dfa2964a6538d8c63a40c1431fdb2959e8c71ea5d5db31aa078"
+    },
+    {
+      "path": "skills/firedrill/references/authoring.md",
+      "bytes": 12495,
+      "sha256": "26e738f32ec1443d979b2b8cbdd33f07e434ba724495ff4192cc484195b330ec"
+    },
+    {
+      "path": "skills/firedrill/references/execution.md",
+      "bytes": 23794,
+      "sha256": "b372b0b215a42a9ffa4b3eecf0cd5884bad1c30a9551eec328c7a44834b3cdcb"
+    },
+    {
+      "path": "skills/firedrill/references/scoring.md",
+      "bytes": 8629,
+      "sha256": "0b12c6186ffa5507195fdeb2b325aad2b7f31c6a439271453643530334839c21"
+    },
+    {
+      "path": "skills/firedrill/references/services.md",
+      "bytes": 12674,
+      "sha256": "283b102d84a7111bfa6c57a1cf026bbe6e8652ea7666b780f833908a1b3bdf2c"
+    },
+    {
+      "path": "skills/firedrill/SKILL.md",
+      "bytes": 6585,
+      "sha256": "7a3f8363374e6897aed2f158385e40829423a4906bb7ca18aae821ed6aa4d492"
+    },
+    {
+      "path": "skills/LICENSE.md",
+      "bytes": 1344,
+      "sha256": "0be3d0c9c3055dfa2964a6538d8c63a40c1431fdb2959e8c71ea5d5db31aa078"
+    },
+    {
+      "path": "tooling/package.mjs",
+      "bytes": 11319,
+      "sha256": "0e7476949e416f44b622b27481cbeec1345ef06b0f6d7dab9d05527685ca1143"
+    }
+  ],
+  "sourceSnapshotSha256": "e7e672eb95be675bdd366c14a2b12193252ae116825c610cee9b3e4a9bcafc0a",
+  "boundary": "Client-only source export. No credentials, private runtime, service, database or repository history. Build/packaging construction is not runtime qualification.",
+  "published": false,
+  "listed": false
+}

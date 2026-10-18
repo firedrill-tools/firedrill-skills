@@ -1,0 +1,15 @@
+{
+  "name": "firedrill",
+  "version": "2.0.0-alpha.9",
+  "description": "Run and inspect real agent simulations, or author private synthetic dependencies, using Firedrill.",
+  "author": {
+    "name": "Firedrill"
+  },
+  "homepage": "https://firedrill.run",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Firedrill",
+    "shortDescription": "Simulate agents and inspect retained evidence",
+    "developerName": "Firedrill"
+  }
+}

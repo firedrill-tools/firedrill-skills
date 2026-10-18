@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firedrill"
+  short_description: "Run and inspect bounded agent simulations"
+  default_prompt: "Use $firedrill to simulate this application across useful scenarios and show the retained evidence."

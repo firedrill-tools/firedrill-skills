@@ -1,0 +1,4 @@
+interface:
+  display_name: "Firedrill Service Authoring"
+  short_description: "Build private stateful simulation dependencies"
+  default_prompt: "Use $firedrill-service-authoring to model this application's dependency and qualify it with retained evidence."
