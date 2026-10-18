@@ -58,8 +58,10 @@ request simply to observe rather than judge.
 - For CLI/SDK invocation, repetitions, reports, comparisons and CI, read
   [execution](references/execution.md).
 - When the user requests quality evaluation, scoring or assessment-backed CI,
-  read [scoring and comparison](references/scoring.md). Do not load grading
-  instructions for observation-only work.
+  read [scoring and comparison](references/scoring.md). It also covers optional
+  Jev ranking of your proposed scenarios through CLI/MCP. Draft situations from
+  the actual application's behavior first; a ranking neither generates scenarios
+  nor establishes coverage. Do not add grading to observation-only work.
 - When dependencies need controlled data/state or modeled time, read
   [synthetic surroundings](references/services.md). Do not add Tools to a tool-free
   application. Publish only the explicitly selected synthetic source/data.
@@ -90,8 +92,10 @@ than implying unverified repeatability; see the execution reference for its shap
 Use retained identities and reports, not terminal success alone. Keep execution,
 observed outcome, optional assessment and optional CI gate separate. A completed
 run is not proof of a correct answer. An evaluator error is not an agent failure.
-Semantic rubric levels allow valid wording variation; exact checks protect hard
-constraints. Scores are not probabilities.
+Semantic rubrics allow valid wording variation; exact checks protect hard
+constraints. Jev's fractional `providerScore.score` is retained separately from
+an ordinal `level`; do not round it, turn missing evidence into zero, or infer a
+passing CI gate from the score. Scores are not probabilities.
 
 Report coverage, important observations, missing evidence and the exact next
 action. For repeated trials, show distributions and failed/interrupted/unknown

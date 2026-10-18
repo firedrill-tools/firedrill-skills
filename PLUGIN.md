@@ -104,7 +104,7 @@ Production is selected automatically. From that repository in the human's
 interactive terminal (after installing the CLI):
 
 ```sh
-npm install --global @firedrill-run/cli@2.0.0
+npm install --global @firedrill-run/cli@2.1.0
 firedrill login --no-browser
 firedrill init
 ```

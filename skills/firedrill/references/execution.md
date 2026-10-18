@@ -327,14 +327,37 @@ No page cursor is invented and presentation does not alter the gate or exit code
 
 ## Ordinary CI
 
-Generate the workflow from the actual command/HTTP recipe with `firedrill ci init
-RECIPE.json --provider github --trigger pull_request --trigger manual
---cli-archive vendor/APPROVED_CLIENT.tgz --json --non-interactive`. Select triggers
-deliberately; schedule uses `--cron`, release/push are independent options. An
-exact published `--cli-version` is an alternative only after publication. Existing
-workflows are not overwritten. Review the generated protected-environment and
-scoped-secret steps; generating files does not grant those permissions. Fork PRs
-are skipped. Never switch to pull_request_target to bypass that boundary.
+Reuse the actual command/HTTP recipe instead of creating a portal-only test:
+
+```sh
+firedrill ci init RECIPE.json --trigger pull_request --trigger manual --github-app --install-command 'npm ci' --json --non-interactive
+```
+
+Choose the application's real dependency-install command; omit that flag when
+none is needed. Select triggers deliberately: push, release and schedule are
+independent options; schedule also needs `--cron`. The installed CLI pins its own
+exact release, never `latest`. Override deliberately with an exact published
+`--cli-version` or reviewed `--cli-archive vendor/APPROVED_CLIENT.tgz`. An
+unpublished source checkout requires an explicit version/archive. Different
+existing workflows are not overwritten.
+
+Review the generated `firedrill-ci` protected environment and scoped-secret
+instructions. Store the selected project/environment's machine credential as
+`FIREDRILL_TOKEN`; the target application's model credentials remain separate.
+Generation does not create secrets or grant permissions. Fork PRs are skipped;
+never switch to `pull_request_target` to bypass that boundary. With `--github-app`,
+install/select the Firedrill CI App for this repository. The generated workflow
+uses `id-token: write` to prove its workflow identity; do not add an App private
+key or general GitHub write token. Omit `--github-app` for ordinary Actions with
+job summaries but no App check/comment.
+
+For an existing native SDK runner, add `--runner EXECUTABLE` and repeated
+`--runner-arg VALUE` options. The script must use the current SDK, the supplied
+`FIREDRILL_RECIPE_FILE` or the same pinned recipe, and preserve
+`FIREDRILL_CI_RESULT_DIRECTORY`. It runs directly, not as a nested command target.
+Native SDKs inherit CI origin from `FIREDRILL_SUBMISSION_ORIGIN`. They can also use
+`simulationExitCode(result)` in TypeScript or `simulation_exit_code(result)` in
+Python to return the same outcome as the CLI.
 
 `firedrill doctor RECIPE.json --json` checks declared scope, admission and local
 command readiness without target/provider requests. Not-checked readiness is
@@ -358,9 +381,39 @@ Execution submissions can record `--origin ci` and optional `--ci-context FILE`
 (native `submissionOrigin`/`ciContext`, Python snake_case). The initial journal
 freezes the original workflow/repository/commit declaration; recovery never
 relabels it from today's job. It is not signed workflow/source attestation.
-Generated GitHub workflows opt into `FIREDRILL_CI_REPORT=github_summary` for a
-bounded job summary and separate delivery receipt. Summary delivery is not a
-PR comment or target execution, and failure never changes retained results/gates.
+The generated workflow saves immutable scoped batch references to its fresh
+private `FIREDRILL_CI_RESULT_DIRECTORY` before target execution. Its always-run
+final `ci report --results` step fetches actual retained server results for all
+admitted batches and enforces their gates. An SDK script exiting zero cannot
+make a blocked simulation green; missing/unsafe references fail closed. An
+earlier failed runner step remains failed after a successful report. Do not
+delete references, change the directory or upload it as a general artifact.
+
+The final step writes a bounded GitHub summary with whole-population
+passed/failed/inconclusive/not-gated counts and an authenticated report link.
+Completed work without a configured gate is not labelled a passed agent.
+With App reporting, the service verifies workflow/repository identity, updates
+an aggregate check for the workflow attempt, and updates one PR comment when a
+PR is present. It does not copy scenario names, inputs, outputs or credentials
+into GitHub. A declared repository name alone is not verified identity. App
+publication and summary delivery are separate from simulation execution; neither
+changes retained outcomes. The explicitly App-enabled generated workflow requires
+confirmed publication and fails its report step if that cannot be confirmed.
+
+Retry publication from the authorized Actions job without rerunning the target:
+
+```sh
+firedrill ci report BATCH_ID --require-app --json --non-interactive
+firedrill ci connections --json
+firedrill batches --origin ci --repository OWNER/REPOSITORY --workflow-run-id RUN_ID --json
+```
+
+Without `--require-app`, publication availability is reported separately while
+the simulation's exit code is preserved. Connections come from verified reports,
+not guessed repository metadata. Operator MCP can read
+`firedrill_ci_connections` and `firedrill_ci_report`; publication still requires
+the real authorized workflow identity. Portal CI history and report links require
+the user's current selected project/environment authorization, not public access.
 
 The CLI checks these outcomes in order:1 for a blocked/inconclusive configured
 gate; otherwise6 for incomplete/interrupted/cancelled/pending work; otherwise5
