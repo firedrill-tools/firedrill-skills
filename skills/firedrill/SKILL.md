@@ -24,6 +24,13 @@ just because a skill was loaded. If the client is absent, identify the approved
 client installation needed and stop before execution; plugin instructions alone
 do not contain an execution client.
 
+After installing the approved CLI in the application repository, use
+`npx firedrill init`, `npx firedrill simulate RECIPE.json` and
+`npx firedrill result BATCH_ID`. Production is automatic; never supply an API
+override, copy development credentials, or retarget a saved development journal.
+Do not run bare `npx firedrill` as an installer on a fresh machine: the unscoped
+npm name is unrelated. Install the approved `@firedrill-run/cli` release first.
+
 Check the installed CLI help or available operator MCP tools, then read
 `firedrill discover --json` / `firedrill_discover` for supported capabilities,
 authoring schemas and limits. Read authenticated context and selected

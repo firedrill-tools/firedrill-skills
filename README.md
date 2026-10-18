@@ -40,8 +40,8 @@ as a side effect of installing instructions.
 
 Install the exact reviewed Firedrill CLI or standalone MCP archive supplied by
 the release handoff. The CLI includes `firedrill-mcp`; do not install two owners
-of that binary into one application. Set only the exact approved API origin,
-then authorize the human's Firedrill account through the client. An explicit
+of that binary into one application. Production is automatic; authorize the
+human's Firedrill account through the client without setting an API address. An explicit
 scoped CI credential is separate and comes from the CI secret store.
 
 The operator login is not authentication to the coding-agent provider or target

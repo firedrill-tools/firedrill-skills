@@ -4,9 +4,9 @@
   "version": "2.0.0-alpha.9",
   "artifact": {
     "filename": "firedrill-agent-plugin-2.0.0-alpha.9.zip",
-    "sha256": "3643ca23ce5c13b749971cc2ddf75812f748a99d5aa79387efc6a0ae04852a7f",
-    "bytes": 54094,
-    "manifestSha256": "c33b12610568ffddc5ea9f8780865ef8b0965ef98dc065d51023c31535ec279d"
+    "sha256": "e2025252a2ff5565a0253615b60261cfb9d5e37fbf33334cc3cc1d8462367455",
+    "bytes": 54233,
+    "manifestSha256": "fccece9d58708671ef2b8119a5fb49fd8e31f8be5c9e63fe1fece25507e7ac41"
   },
   "files": [
     {
@@ -71,13 +71,13 @@
     },
     {
       "path": "PLUGIN.md",
-      "bytes": 6748,
-      "sha256": "23fdab32a4947a10a28aa7ed2dc4983b34eeae02c4dd21b6f8c239d42ecbb5f9"
+      "bytes": 6631,
+      "sha256": "df203fa8c29b59bb7c2860829ecb90bf71860180daaab902c3f7f9748d874019"
     },
     {
       "path": "README.md",
-      "bytes": 4204,
-      "sha256": "57ed5242c7f391005e29757f83ba30114c1f9627463ad659632879993e81a45e"
+      "bytes": 4215,
+      "sha256": "bc80efc35ff48eb481e7d46f883d3e5a1c5d5db83b2c1e523b8368d6e96db9bf"
     },
     {
       "path": "skills/firedrill-service-authoring/agents/openai.yaml",
@@ -136,8 +136,8 @@
     },
     {
       "path": "skills/firedrill/SKILL.md",
-      "bytes": 6585,
-      "sha256": "7a3f8363374e6897aed2f158385e40829423a4906bb7ca18aae821ed6aa4d492"
+      "bytes": 7038,
+      "sha256": "13cedaa9ed41ded8fcd8e5f52f6274ad0daff3065a515b602256fafe622b3ab9"
     },
     {
       "path": "skills/LICENSE.md",
@@ -150,7 +150,7 @@
       "sha256": "fd71dbfca672110b8148673961f77da7f5a3368e0011e36e1f5b75c0b7c66bfe"
     }
   ],
-  "sourceSnapshotSha256": "9349d7fe356770eb0274f248c149ea5c56300fb5ca948e8aaf4b937dcd041236",
+  "sourceSnapshotSha256": "983379574a2b9cb64ea9c4ce60fe38224f7ce01d9866a628b83b9d824158ceb2",
   "boundary": "Client-only source export. No credentials, private runtime, service, database or repository history. Build/packaging construction is not runtime qualification.",
   "published": false,
   "listed": false

@@ -58,7 +58,7 @@ codex plugin marketplace add /absolute/path/to/unzipped-marketplace
 
 Then use the desktop Plugins Directory to select and install Firedrill from that
 local source. Reopen the application in a fresh trusted session. CLI-only users
-can instead use `firedrill setup codex --api-url ORIGIN` in their application
+can instead use `firedrill setup codex` in their application
 repository. Local installation and trusted-project rules are controlled by the
 host; there is no claimed one-click installation or approved public listing.
 
@@ -66,7 +66,7 @@ For Cursor, the plugin and marketplace use Cursor's documented formats. Team
 distribution uses the host's reviewed repository-marketplace flow and requires
 the appropriate account/admin authority. This package does not invent a local
 ZIP-import command or claim a public listing. The offline, repository-only path
-is `firedrill setup cursor --api-url ORIGIN`. See
+is `firedrill setup cursor`. See
 [Cursor's plugin distribution](https://prod.cursor.com/docs/plugins) and
 [manifest reference](https://prod.cursor.com/docs/reference/plugins).
 
@@ -80,7 +80,7 @@ archive, or select `plugins/firedrill` inside the marketplace bundle:
 ```
 
 Kimi plugin installation is user-wide, not project-only. Use
-`firedrill setup kimi --api-url ORIGIN` for a project-scoped skills/MCP setup
+`firedrill setup kimi` for a project-scoped skills/MCP setup
 instead. Its plugin command is an explicit user action, never performed by
 Firedrill setup. Inspect the plugin in `/plugins info firedrill`. Kimi's native
 format and lifecycle are documented in its
@@ -90,12 +90,12 @@ format and lifecycle are documented in its
 
 Install the approved Firedrill CLI archive in the application repository if it is
 not already present. The plugin does not download executable packages for you.
-Use the exact selected service origin from the release handoff. In the human's
-interactive terminal:
+Production is selected automatically. From that repository in the human's
+interactive terminal (after installing the CLI):
 
 ```sh
-npx --no-install firedrill login --api-url "$FIREDRILL_API_URL" --no-browser
-npx --no-install firedrill init --api-url "$FIREDRILL_API_URL"
+npx firedrill login --no-browser
+npx firedrill init
 ```
 
 Ask the skill to inspect the real entry point and prepare a bounded simulation.
