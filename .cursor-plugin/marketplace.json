@@ -1,5 +1,6 @@
 {
   "name": "firedrill",
+  "description": "Firedrill skills for running agent simulations and authoring synthetic dependencies.",
   "owner": {
     "name": "Firedrill"
   },

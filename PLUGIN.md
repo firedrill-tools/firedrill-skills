@@ -11,7 +11,17 @@ already used `firedrill setup codex`, `claude`, `cursor` or `kimi`, those skills
 the authenticated local MCP are sufficient. Do not install duplicate skill
 copies simply to start a simulation.
 
-## Install the prepared package
+## Install the plugin
+
+For Claude Code, add the Firedrill skills marketplace and install its plugin:
+
+```sh
+claude plugin marketplace add firedrill-tools/firedrill-skills
+claude plugin install firedrill@firedrill
+```
+
+Use the host's normal consent flow. The following archive instructions are an
+alternative for an offline or reviewed local installation.
 
 Unzip the exact approved archive into a directory you control. Its root contains
 `plugins/firedrill`, `.agents/plugins/marketplace.json` for Codex,
@@ -88,14 +98,15 @@ format and lifecycle are documented in its
 
 ## Use your actual application
 
-Install the approved Firedrill CLI archive in the application repository if it is
-not already present. The plugin does not download executable packages for you.
+Install the Firedrill CLI if it is not already present. The plugin does not
+download executable packages for you.
 Production is selected automatically. From that repository in the human's
 interactive terminal (after installing the CLI):
 
 ```sh
-npx firedrill login --no-browser
-npx firedrill init
+npm install --global @firedrill-run/cli@2.0.0
+firedrill login --no-browser
+firedrill init
 ```
 
 Ask the skill to inspect the real entry point and prepare a bounded simulation.
@@ -113,7 +124,8 @@ the duplicate instructions.
 ## Remove or revoke
 
 Remove/disable the plugin in the host's plugin manager. For Claude Code, use
-`claude plugin uninstall firedrill@firedrill-local`. This removes instructions,
+`claude plugin uninstall firedrill@firedrill` (or `firedrill@firedrill-local` for
+the local archive marketplace). This removes instructions,
 not account access, installed CLI packages, saved recipes or results. Revoke a
 specific machine credential or use `firedrill logout` separately when that is
 the intended action. No uninstall action erases remote evidence. For Codex,

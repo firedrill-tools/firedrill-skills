@@ -102,9 +102,9 @@ for (const [path] of files) if (path.endsWith(".md")) {
 put(".agents/plugins/marketplace.json", json({ name: "firedrill-local", interface: { displayName: "Firedrill" },
   plugins: [{ name: "firedrill", source: { source: "local", path: "./plugins/firedrill" },
     policy: { installation: "AVAILABLE", authentication: "ON_INSTALL" }, category: "Productivity" }] }));
-put(".claude-plugin/marketplace.json", json({ name: "firedrill-local", owner: { name: "Firedrill" },
+put(".claude-plugin/marketplace.json", json({ name: "firedrill-local", description: "Firedrill skills for running agent simulations and authoring synthetic dependencies.", owner: { name: "Firedrill" },
   plugins: [{ name: "firedrill", source: "./plugins/firedrill", description: manifest.description }] }));
-put(".cursor-plugin/marketplace.json", json({ name: "firedrill-local", owner: { name: "Firedrill" },
+put(".cursor-plugin/marketplace.json", json({ name: "firedrill-local", description: "Firedrill skills for running agent simulations and authoring synthetic dependencies.", owner: { name: "Firedrill" },
   plugins: [{ name: "firedrill", source: "./plugins/firedrill", description: manifest.description }] }));
 put("kimi-marketplace.json", json({ version: "2", plugins: [{ id: "firedrill", displayName: "Firedrill", source: "./plugins/firedrill" }] }));
 put("README.md", read(join(inputRoot, "PLUGIN.md")));

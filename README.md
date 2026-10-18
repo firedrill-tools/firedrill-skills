@@ -5,14 +5,12 @@ Use `firedrill` to simulate an existing application and inspect retained evidenc
 use `firedrill-service-authoring` only when a simulation needs a new private
 synthetic dependency. Tool-free and observation-only simulations remain valid.
 
-This is a private release-staging repository. Public availability and directory
-approval are separate decisions. Skills do not contain the Firedrill service,
+Skills do not contain the Firedrill service,
 an execution client, credentials or an automatic installer.
 
 ## Install one integration, not duplicate copies
 
-With authorized access to this repository, review its contents, then from the
-application repository use the open `skills` CLI:
+Review the instructions, then from your application repository:
 
 ```sh
 npx skills add firedrill-tools/firedrill-skills --skill firedrill --skill firedrill-service-authoring --agent codex
@@ -26,11 +24,11 @@ reviewed checkout, use its local directory instead of the GitHub source.
 Repository access is not Firedrill account authorization.
 
 Alternatively, install the packaged native plugin through your host. For the
-prepared Claude marketplace, `/plugin marketplace add firedrill-tools/firedrill-skills`
+Claude marketplace, `/plugin marketplace add firedrill-tools/firedrill-skills`
 then `/plugin install firedrill@firedrill` selects this repository's plugin.
 For local review use the absolute checkout path as the marketplace source.
 Other host manifests are included; follow the host's current installation and
-consent interface. No public marketplace listing is claimed.
+consent interface.
 
 Use either the plugin, direct skills, or the Firedrill CLI's repository setup,
 not all three. Do not overwrite locally edited skills or change workspace trust
@@ -38,8 +36,15 @@ as a side effect of installing instructions.
 
 ## Connect the execution client
 
-Install the exact reviewed Firedrill CLI or standalone MCP archive supplied by
-the release handoff. The CLI includes `firedrill-mcp`; do not install two owners
+Install the Firedrill CLI:
+
+```sh
+npm install --global @firedrill-run/cli@2.0.0
+firedrill login
+firedrill init
+```
+
+Run `init` from your application repository. The CLI includes `firedrill-mcp`; do not install two owners
 of that binary into one application. Production is automatic; authorize the
 human's Firedrill account through the client without setting an API address. An explicit
 scoped CI credential is separate and comes from the CI secret store.
@@ -73,10 +78,9 @@ does not install or submit anything. Preserve the exact exported files and
 
 ## Discovery and license
 
-Once separately approved for public release, the root `skills/` layout is
-discoverable by the skills CLI. The skills.sh leaderboard uses installation
-telemetry; a private staging push is not a public listing. Users still decide
-what to install, authorize and invoke.
+The root `skills/` layout is discoverable by the skills CLI. The skills.sh
+leaderboard uses installation telemetry. Users decide what to install,
+authorize and invoke; discovery does not automatically enable a skill.
 
 See [client use permission](LICENSE.md). These instructions are proprietary
 client material; a readable repository is not a license to the private service.
