@@ -13,11 +13,24 @@ copies simply to start a simulation.
 
 ## Install the plugin
 
+For Codex, use its native marketplace and installation commands:
+
+```sh
+codex plugin marketplace add firedrill-tools/firedrill-skills
+codex plugin add firedrill@firedrill
+```
+
+This is user-wide. Start a new session and choose the Firedrill plugin skill.
+If your version does not support `plugin add`, use `/plugins` to install from the
+added marketplace, or use the portable skills installer. The skills-only plugin
+does not register MCP; after installing the Firedrill CLI, use
+`codex mcp add firedrill -- firedrill-mcp` separately if you want MCP access.
+
 For Claude Code, add the Firedrill skills marketplace and install its plugin:
 
 ```sh
 claude plugin marketplace add firedrill-tools/firedrill-skills
-claude plugin install firedrill@firedrill
+claude plugin install firedrill@firedrill --scope project
 ```
 
 Use the host's normal consent flow. The following archive instructions are an
@@ -66,10 +79,11 @@ marketplace file:
 codex plugin marketplace add /absolute/path/to/unzipped-marketplace
 ```
 
-Then use the desktop Plugins Directory to select and install Firedrill from that
-local source. Reopen the application in a fresh trusted session. CLI-only users
-can instead use `firedrill setup codex` in their application
-repository. Local installation and trusted-project rules are controlled by the
+Then use `codex plugin add firedrill@firedrill-local` where supported, or the
+Plugins Directory to select and install Firedrill from that local source. Reopen
+the application in a fresh trusted session. The optional `firedrill setup codex`
+helper is a separate repo-local alternative, not an additional step. Local
+installation and trusted-project rules are controlled by the
 host; there is no claimed one-click installation or approved public listing.
 
 For Cursor, the plugin and marketplace use Cursor's documented formats. Team
@@ -104,7 +118,7 @@ Production is selected automatically. From that repository in the human's
 interactive terminal (after installing the CLI):
 
 ```sh
-npm install --global @firedrill-run/cli@2.1.0
+npm install --global @firedrill-run/cli
 firedrill login --no-browser
 firedrill init
 ```
@@ -116,8 +130,9 @@ workflow is as valid as finding a defect. The CLI and native SDKs save the actua
 recipe, results and evidence; the portal inspects those same records.
 
 The plugin uses installed terminal commands by default. Optional local operator
-MCP is configured through the CLI's host setup, not through a token embedded in
-this archive. Remote MCP cannot launch code on the customer's laptop. Do not
+MCP is configured through native `codex mcp add` / `claude mcp add` commands or
+the host's supported MCP settings, not through a token embedded in this archive.
+Remote MCP cannot launch code on the customer's laptop. Do not
 configure both plugin and repo-local skill copies unless you deliberately want
 the duplicate instructions.
 
