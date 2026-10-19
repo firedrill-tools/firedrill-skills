@@ -8,7 +8,29 @@ synthetic dependency. Tool-free and observation-only simulations remain valid.
 Skills do not contain the Firedrill service,
 an execution client, credentials or an automatic installer.
 
-## Install one integration, not duplicate copies
+## Native plugin installation
+
+Use the coding agent's own plugin manager when available. For Codex:
+
+```sh
+codex plugin marketplace add firedrill-tools/firedrill-skills
+codex plugin add firedrill@firedrill
+```
+
+For Claude Code, from the application repository:
+
+```sh
+claude plugin marketplace add firedrill-tools/firedrill-skills
+claude plugin install firedrill@firedrill --scope project
+```
+
+Codex installs user-wide. Claude enables the plugin for this project and registers
+the marketplace in user settings. Older Codex clients without `plugin add` can
+install from the added marketplace through `/plugins`, or use the portable skills
+installer below. Restart/reload the host after installation. The plugin is
+skills-only, not an MCP executable or a Firedrill login.
+
+## Portable skills alternative
 
 Review the instructions, then from your application repository:
 
@@ -23,9 +45,8 @@ its references and license are contained in its own folder. For an offline
 reviewed checkout, use its local directory instead of the GitHub source.
 Repository access is not Firedrill account authorization.
 
-Alternatively, install the packaged native plugin through your host. For the
-Claude marketplace, `/plugin marketplace add firedrill-tools/firedrill-skills`
-then `/plugin install firedrill@firedrill` selects this repository's plugin.
+Inside Claude Code, `/plugin marketplace add firedrill-tools/firedrill-skills`
+then `/plugin install firedrill@firedrill` is the interactive native alternative.
 For local review use the absolute checkout path as the marketplace source.
 Other host manifests are included; follow the host's current installation and
 consent interface.
@@ -39,7 +60,7 @@ as a side effect of installing instructions.
 Install the Firedrill CLI:
 
 ```sh
-npm install --global @firedrill-run/cli@2.1.0
+npm install --global @firedrill-run/cli
 firedrill login
 firedrill init
 ```
@@ -48,6 +69,17 @@ Run `init` from your application repository. The CLI includes `firedrill-mcp`; d
 of that binary into one application. Production is automatic; authorize the
 human's Firedrill account through the client without setting an API address. An explicit
 scoped CI credential is separate and comes from the CI secret store.
+
+For optional MCP access, register that executable with your host:
+
+```sh
+codex mcp add firedrill -- firedrill-mcp
+# Or for Claude Code project scope:
+claude mcp add --scope project --transport stdio firedrill -- firedrill-mcp
+```
+
+Review the host's MCP approval prompt. Operator authentication is separate from
+installing/enabling the plugin or MCP entry; no token is embedded in either.
 
 The operator login is not authentication to the coding-agent provider or target
 application. Keep those credentials separate. Missing access is a human handoff,
