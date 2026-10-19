@@ -1,6 +1,6 @@
 {
   "name": "firedrill",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Run and inspect real agent simulations, or author private synthetic dependencies, using Firedrill.",
   "author": {
     "name": "Firedrill"

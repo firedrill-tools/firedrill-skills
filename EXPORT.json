@@ -1,12 +1,12 @@
 {
   "schemaVersion": "2026-10-18-agent-repository-export.1",
   "kind": "skills",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "artifact": {
-    "filename": "firedrill-agent-plugin-2.2.1.zip",
-    "sha256": "2e11726132e9662868499f3d51d5aec545e61b78e9bb4cc7aae693df0a2bb9c8",
-    "bytes": 58422,
-    "manifestSha256": "7ab218d386a0fc83470c4bc88fec9a7d146eee2118202b8d1bba5fac6ac9d459"
+    "filename": "firedrill-agent-plugin-2.2.2.zip",
+    "sha256": "c827d0cd7d98490b32cc9657bb0e55f7392cd511bb95a75fd6ceb67fb48e2542",
+    "bytes": 58417,
+    "manifestSha256": "82ee6e549a8c304c994e8c66b413497a93fbddd9253780071b6011c40d6cdb1f"
   },
   "files": [
     {
@@ -22,12 +22,12 @@
     {
       "path": ".claude-plugin/plugin.json",
       "bytes": 320,
-      "sha256": "310f879a7f9e49ff42091f25964b7edaf8343e60113f6d3cbebbec386d7aa51c"
+      "sha256": "585d8997adc8cdfcb0320e71d681deaf746b6c60c1be39792fd982e39d7c3679"
     },
     {
       "path": ".codex-plugin/plugin.json",
       "bytes": 1161,
-      "sha256": "2bef5de25f60be44c6b7b00692b6e5561fd8bca3e3922229501d9aec5ed38a6e"
+      "sha256": "b66710d5b9af497706f0d2bced91888e782cd05aa8ea99cb81178ed43330fbf5"
     },
     {
       "path": ".cursor-plugin/marketplace.json",
@@ -37,7 +37,7 @@
     {
       "path": ".cursor-plugin/plugin.json",
       "bytes": 345,
-      "sha256": "d9a79a4ce8d64cd403815c9af7331ec50863b1b0e8dc6e4f67abd3bd8ec13f41"
+      "sha256": "b766345a295a4cf6c97317a285cbbed9052175a93ecdccab7eb45a017d19dfe6"
     },
     {
       "path": ".gitignore",
@@ -57,7 +57,7 @@
     {
       "path": "kimi.plugin.json",
       "bytes": 434,
-      "sha256": "f65e3dd7176b83414a9827ea4cdfb968a6e7d7a7cac375774fe03216fabab604"
+      "sha256": "3eb07fdf34890fb7a30f8e75d17825d6ba654dd2dc1aed70563d077148905eb9"
     },
     {
       "path": "LICENSE.md",
@@ -67,7 +67,7 @@
     {
       "path": "plugin.json",
       "bytes": 1358,
-      "sha256": "dd5825eb3e34a058cf7835be9dfdc5a494cd9b83a1e04ad6464f16c9d5b972af"
+      "sha256": "130912b2cbd06eb4e65984c942631784cabb899e3a7bfd0ce8a40416a69cd474"
     },
     {
       "path": "PLUGIN.md",
@@ -150,7 +150,7 @@
       "sha256": "b013b0284d2c830f17f5b598aa90a649f451aa8e16c73ea0957aceccd2dbe026"
     }
   ],
-  "sourceSnapshotSha256": "98048bd2bbc4743ee1a52da70db36763a8b8776f57ca2fa4e7ce6b2f97525c99",
+  "sourceSnapshotSha256": "8f83aff10cdd7938ce0f12989f8e7738fae87b1580681782e9517457baae7e0e",
   "boundary": "Client-only source export. No credentials, private runtime, service, database or repository history. Build/packaging construction is not runtime qualification.",
   "published": false,
   "listed": false
