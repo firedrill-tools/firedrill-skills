@@ -61,10 +61,10 @@ No local MCP package or CLI is needed. Register the remote server and complete
 your host's WorkOS browser authorization:
 
 ```sh
-codex mcp add firedrill --url https://api.firedrill.run/mcp
+codex mcp add firedrill --url https://mcp.firedrill.run/mcp
 codex mcp login firedrill
 # Or for Claude Code project scope:
-claude mcp add --scope project --transport http firedrill https://api.firedrill.run/mcp
+claude mcp add --scope project --transport http firedrill https://mcp.firedrill.run/mcp
 claude mcp login firedrill
 ```
 
@@ -72,7 +72,7 @@ Review the host's MCP approval prompt. Operator authentication is separate from
 installing/enabling the plugin or MCP entry. The host stores the OAuth credential;
 no token is embedded in these files or required in chat. Use the intended organization.
 
-In Cursor, merge `"firedrill": { "url": "https://api.firedrill.run/mcp" }` under
+In Cursor, merge `"firedrill": { "url": "https://mcp.firedrill.run/mcp" }` under
 `mcpServers` in `.cursor/mcp.json` and complete its browser authentication. In
 Kimi Code, use `/mcp-config` to add a project HTTP server with that URL and then
 `/mcp-config login firedrill`. Preserve other configured servers.

@@ -1,12 +1,12 @@
 {
   "schemaVersion": "2026-10-18-agent-repository-export.1",
   "kind": "skills",
-  "version": "2.2.0",
+  "version": "2.2.2",
   "artifact": {
-    "filename": "firedrill-agent-plugin-2.2.0.zip",
-    "sha256": "a9096e34c268b945df64868c854cb8be306ab2133687b6a5ff7c8449ef93b73c",
-    "bytes": 58428,
-    "manifestSha256": "3565f8d17bfe99a8780692dc67440486cd0988919e850b7dd48f479c7b7fc07e"
+    "filename": "firedrill-agent-plugin-2.2.2.zip",
+    "sha256": "c827d0cd7d98490b32cc9657bb0e55f7392cd511bb95a75fd6ceb67fb48e2542",
+    "bytes": 58417,
+    "manifestSha256": "82ee6e549a8c304c994e8c66b413497a93fbddd9253780071b6011c40d6cdb1f"
   },
   "files": [
     {
@@ -22,12 +22,12 @@
     {
       "path": ".claude-plugin/plugin.json",
       "bytes": 320,
-      "sha256": "8757dfbb32303e7ebc9c3f5c78881ff238414975e60ea5671c54f3c26f274208"
+      "sha256": "585d8997adc8cdfcb0320e71d681deaf746b6c60c1be39792fd982e39d7c3679"
     },
     {
       "path": ".codex-plugin/plugin.json",
       "bytes": 1161,
-      "sha256": "261b55e9b78e447bcf0822548c92fcd4f9d81735b52aa0baf443602d6020e75c"
+      "sha256": "b66710d5b9af497706f0d2bced91888e782cd05aa8ea99cb81178ed43330fbf5"
     },
     {
       "path": ".cursor-plugin/marketplace.json",
@@ -37,7 +37,7 @@
     {
       "path": ".cursor-plugin/plugin.json",
       "bytes": 345,
-      "sha256": "86c70ecce0f5f0a64505253ad4984cfc08e40c69536e7825a3c8cbc6637a9133"
+      "sha256": "b766345a295a4cf6c97317a285cbbed9052175a93ecdccab7eb45a017d19dfe6"
     },
     {
       "path": ".gitignore",
@@ -57,7 +57,7 @@
     {
       "path": "kimi.plugin.json",
       "bytes": 434,
-      "sha256": "fe77df63f65c3ef249a2a6d97eacddd6a62581cf97ae64b22ed3351284e32b61"
+      "sha256": "3eb07fdf34890fb7a30f8e75d17825d6ba654dd2dc1aed70563d077148905eb9"
     },
     {
       "path": "LICENSE.md",
@@ -67,17 +67,17 @@
     {
       "path": "plugin.json",
       "bytes": 1358,
-      "sha256": "4f23b09c7bf5de88f40a6b070579228fbafb64d9db0a924e8abea483e4cc84dd"
+      "sha256": "130912b2cbd06eb4e65984c942631784cabb899e3a7bfd0ce8a40416a69cd474"
     },
     {
       "path": "PLUGIN.md",
       "bytes": 8892,
-      "sha256": "200094845532a191acc52316419df9d32786c0a28fafaa82ea178003c0b96bf6"
+      "sha256": "06ddf1abe0f1bc541a0ae1a30db9bee764f99de8a934613ef6664d75e4bad88f"
     },
     {
       "path": "README.md",
       "bytes": 6068,
-      "sha256": "f41a5091d807592c4ed00cd8d2875a98c9aa0bd390837fd394c62e5a85047126"
+      "sha256": "75dae8a368163b0cd410b559aa4515c3d915c6e3e30cee02b033ac5fc9191ecc"
     },
     {
       "path": "skills/firedrill-service-authoring/agents/openai.yaml",
@@ -137,7 +137,7 @@
     {
       "path": "skills/firedrill/SKILL.md",
       "bytes": 8109,
-      "sha256": "ec56c32588c9fa9f6df1362cc9b7628e6af3370fab01e9e3c11dadcb5c1e5aa3"
+      "sha256": "a79fcf37991dc6a14508f24b84f987866cc942cbfbdc0a3a0352e5804bd351da"
     },
     {
       "path": "skills/LICENSE.md",
@@ -150,7 +150,7 @@
       "sha256": "b013b0284d2c830f17f5b598aa90a649f451aa8e16c73ea0957aceccd2dbe026"
     }
   ],
-  "sourceSnapshotSha256": "b21c9351f0e2f25415fc9ff496ecf2f25ce7f65c252a845b25caca90aaa60e4b",
+  "sourceSnapshotSha256": "8f83aff10cdd7938ce0f12989f8e7738fae87b1580681782e9517457baae7e0e",
   "boundary": "Client-only source export. No credentials, private runtime, service, database or repository history. Build/packaging construction is not runtime qualification.",
   "published": false,
   "listed": false
