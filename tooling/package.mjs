@@ -48,10 +48,12 @@ const json = value => JSON.stringify(value, null, 2) + "\n";
 const manifest = JSON.parse(read(join(inputRoot, "plugin.json")));
 if (manifest.name !== "firedrill" || !/^\d+\.\d+\.\d+(?:-[a-z0-9.-]+)?$/.test(manifest.version) || !manifest.description || manifest.mcpServers || manifest.hooks)
   fail("the canonical manifest must describe the skills-only Firedrill plugin");
+if (typeof manifest.extensions?.["com.openai"]?.requires_local_executor !== "boolean")
+  fail("declare whether every plugin task requires local execution; target-runner permissions remain task-specific");
 put("plugins/firedrill/plugin.json", json(manifest));
 put("plugins/firedrill/.codex-plugin/plugin.json", json({ name: manifest.name, version: manifest.version, description: manifest.description,
   author: { name: "Firedrill" }, skills: "./skills/", interface: manifest.extensions["com.openai"].interface,
-  requires_local_executor: manifest.extensions["com.openai"].requires_local_executor === true }));
+  requires_local_executor: manifest.extensions["com.openai"].requires_local_executor }));
 put("plugins/firedrill/.claude-plugin/plugin.json", json({ name: manifest.name, version: manifest.version, description: manifest.description,
   author: { name: "Firedrill" }, homepage: "https://firedrill.run", repository: "https://github.com/firedrill-tools/firedrill-skills" }));
 put("plugins/firedrill/.cursor-plugin/plugin.json", json({ name: manifest.name, version: manifest.version, description: manifest.description,
