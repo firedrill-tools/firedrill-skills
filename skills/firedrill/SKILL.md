@@ -19,7 +19,7 @@ agent to Firedrill or require portal setup. If no safe invocation seam exists,
 explain the small adapter needed before claiming you can simulate it.
 
 These instructions work as a host plugin or project skill. Prefer the host's
-remote Streamable HTTP connection to `https://api.firedrill.run/mcp` and its
+remote Streamable HTTP connection to `https://mcp.firedrill.run/mcp` and its
 native browser OAuth action. WorkOS approval authorizes Firedrill access; the
 host stores its credential outside model context. This connection needs no
 local MCP package or Firedrill CLI. Do not install duplicate skills, change

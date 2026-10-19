@@ -7,7 +7,7 @@ uploads no source and reserves no resources. Firedrill sign-in authorizes the
 operator on the human's behalf; target-model credentials remain separate.
 
 Use this plugin **or** direct skill installation, not both. The plugin supplies
-instructions; connect the host separately to `https://api.firedrill.run/mcp` using
+instructions; connect the host separately to `https://mcp.firedrill.run/mcp` using
 Streamable HTTP and browser OAuth. Remote preparation and inspection need no
 local MCP package or Firedrill CLI. Existing managed project skills are an
 alternative installation path, not another required step.
@@ -17,7 +17,7 @@ alternative installation path, not another required step.
 For Codex, use its native marketplace and installation commands:
 
 ```sh
-codex mcp add firedrill --url https://api.firedrill.run/mcp
+codex mcp add firedrill --url https://mcp.firedrill.run/mcp
 codex mcp login firedrill
 codex plugin marketplace add firedrill-tools/firedrill-skills
 codex plugin add firedrill@firedrill
@@ -32,7 +32,7 @@ does not register MCP. The native URL command above registers the remote server;
 For Claude Code, add the Firedrill skills marketplace and install its plugin:
 
 ```sh
-claude mcp add --scope project --transport http firedrill https://api.firedrill.run/mcp
+claude mcp add --scope project --transport http firedrill https://mcp.firedrill.run/mcp
 claude mcp login firedrill
 claude plugin marketplace add firedrill-tools/firedrill-skills
 claude plugin install firedrill@firedrill --scope project
@@ -98,7 +98,7 @@ For Cursor, the plugin and marketplace use Cursor's documented formats. Team
 distribution uses the host's reviewed repository-marketplace flow and requires
 the appropriate account/admin authority. This package does not invent a local
 ZIP-import command or claim a public listing. For the remote connection, merge
-`"firedrill": { "url": "https://api.firedrill.run/mcp" }` under `mcpServers` in
+`"firedrill": { "url": "https://mcp.firedrill.run/mcp" }` under `mcpServers` in
 `.cursor/mcp.json` without replacing other entries, then complete Cursor's
 browser authentication. Direct project skills can use the portable skills
 installer instead of a plugin. See
@@ -116,7 +116,7 @@ archive, or select `plugins/firedrill` inside the marketplace bundle:
 
 Kimi plugin installation is user-wide, not project-only. Use `/mcp-config` to add
 a project-level HTTP server named `firedrill` at
-`https://api.firedrill.run/mcp`, then `/mcp-config login firedrill` for browser
+`https://mcp.firedrill.run/mcp`, then `/mcp-config login firedrill` for browser
 authorization. Plugin installation and host trust are explicit host actions.
 Inspect the plugin in `/plugins info firedrill`. Kimi's native
 format and lifecycle are documented in its
