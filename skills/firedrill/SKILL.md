@@ -18,18 +18,26 @@ Python/TypeScript SDK for a callable. Do not migrate the framework, deploy their
 agent to Firedrill or require portal setup. If no safe invocation seam exists,
 explain the small adapter needed before claiming you can simulate it.
 
-These instructions work as a host plugin or project skill. Use the installed
-CLI/MCP; do not install duplicate skills, change workspace trust or enable tools
-just because a skill was loaded. If the client is absent, identify the approved
-client installation needed and stop before execution; plugin instructions alone
-do not contain an execution client.
+These instructions work as a host plugin or project skill. Prefer the host's
+remote Streamable HTTP connection to `https://api.firedrill.run/mcp` and its
+native browser OAuth action. WorkOS approval authorizes Firedrill access; the
+host stores its credential outside model context. This connection needs no
+local MCP package or Firedrill CLI. Do not install duplicate skills, change
+workspace trust or enable tools merely because a skill was loaded.
 
-After installing the approved CLI in the application repository, use
-`npx firedrill init`, `npx firedrill simulate RECIPE.json` and
-`npx firedrill result BATCH_ID`. Production is automatic; never supply an API
-override, copy development credentials, or retarget a saved development journal.
-Do not run bare `npx firedrill` as an installer on a fresh machine: the unscoped
-npm name is unrelated. Install the approved `@firedrill-run/cli` release first.
+Choose the execution path from the task. Remote MCP can prepare recipes, manage
+authorized synthetic dependencies and inspect retained reports without a local
+executor. It cannot launch the user's repo or provide a missing target callback.
+For actual target execution, use an available authorized customer-owned CLI/SDK
+runner. If none is available, explain the runner handoff and continue permissible
+preparation/inspection; never label queued work as executed.
+
+For command/HTTP execution, the CLI installation is
+`npm install --global @firedrill-run/cli`, then `firedrill init` in the application
+repository and `firedrill simulate RECIPE.json`. Native callables use the Python
+or TypeScript SDK. Production is automatic; never supply an API override, copy
+development credentials or retarget a saved development journal. Bare
+`npx firedrill` is not a fresh installer: the unscoped npm name is unrelated.
 
 Check the installed CLI help or available operator MCP tools, then read
 `firedrill discover --json` / `firedrill_discover` for supported capabilities,
@@ -43,8 +51,10 @@ Firedrill sign-in authenticates **you as the operator acting for the user**. It
 does not sign in to your coding-agent provider or the application under simulation.
 Keep that application's model keys and business login separate. Prepared synthetic
 Tool grants authorize only their selected run/instance operations; they are not
-Firedrill account credentials. Local CLI/MCP/SDK may share the protected,
-origin-bound Firedrill login; an explicit CI credential has its own scoped lifetime.
+Firedrill account credentials. The remote MCP host's OAuth session is separate
+from the CLI/SDK's protected sign-in. Authorize the execution client under the
+same intended organization instead of copying host tokens. An explicit CI
+credential has its own scoped lifetime and must come from its secret store.
 
 Choose the least machinery that answers the user's question. Before execution,
 state the case/configuration/repetition count, real application entry point,

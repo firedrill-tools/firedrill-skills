@@ -55,31 +55,45 @@ Use either the plugin, direct skills, or the Firedrill CLI's repository setup,
 not all three. Do not overwrite locally edited skills or change workspace trust
 as a side effect of installing instructions.
 
-## Connect the execution client
+## Connect remote MCP
 
-Install the Firedrill CLI:
-
-```sh
-npm install --global @firedrill-run/cli
-firedrill login
-firedrill init
-```
-
-Run `init` from your application repository. The CLI includes `firedrill-mcp`; do not install two owners
-of that binary into one application. Production is automatic; authorize the
-human's Firedrill account through the client without setting an API address. An explicit
-scoped CI credential is separate and comes from the CI secret store.
-
-For optional MCP access, register that executable with your host:
+No local MCP package or CLI is needed. Register the remote server and complete
+your host's WorkOS browser authorization:
 
 ```sh
-codex mcp add firedrill -- firedrill-mcp
+codex mcp add firedrill --url https://api.firedrill.run/mcp
+codex mcp login firedrill
 # Or for Claude Code project scope:
-claude mcp add --scope project --transport stdio firedrill -- firedrill-mcp
+claude mcp add --scope project --transport http firedrill https://api.firedrill.run/mcp
+claude mcp login firedrill
 ```
 
 Review the host's MCP approval prompt. Operator authentication is separate from
-installing/enabling the plugin or MCP entry; no token is embedded in either.
+installing/enabling the plugin or MCP entry. The host stores the OAuth credential;
+no token is embedded in these files or required in chat. Use the intended organization.
+
+In Cursor, merge `"firedrill": { "url": "https://api.firedrill.run/mcp" }` under
+`mcpServers` in `.cursor/mcp.json` and complete its browser authentication. In
+Kimi Code, use `/mcp-config` to add a project HTTP server with that URL and then
+`/mcp-config login firedrill`. Preserve other configured servers.
+
+## Execute the actual application
+
+Remote MCP can prepare simulations, manage authorized synthetic Tools and inspect
+retained results. It cannot launch a process on the customer's machine. For
+command/HTTP execution, install the CLI with Node.js 22+:
+
+```sh
+npm install --global @firedrill-run/cli
+firedrill init
+```
+
+Run `init` in the application repository. It offers a separate browser sign-in
+when needed and selects the project/environment. Use the same intended
+organization as MCP; never copy host tokens into the CLI. Callable targets can
+use native Python/TypeScript SDKs. CI uses its own scoped secret-store credential
+and never prompts. If no actual runner is available, keep preparation/inspection
+separate from execution and show the required handoff.
 
 The operator login is not authentication to the coding-agent provider or target
 application. Keep those credentials separate. Missing access is a human handoff,
@@ -94,8 +108,10 @@ recipes can later run in ordinary CLI/SDK/CI without a live coding-agent chat.
 
 The source entrypoints are `skills/*/SKILL.md`. `plugin.json` and the host-specific
 manifests describe the same skills-only plugin; `assets/` contains its brand icon.
-No remote MCP URL, hooks, automatic trust, or secret is embedded. OpenAI's manifest
-marks the workflow as requiring local execution because its client runs locally.
+No MCP connection, hooks, automatic trust or secret is embedded in the skills-only
+plugin. Its instructions provide the public remote URL above. The manifest does
+not require a local executor for remote preparation/inspection; actual target
+execution still requires the appropriate authorized customer-owned CLI/SDK runner.
 
 To create ZIPs from this checkout, use Node 22+ and the system `zip` utility:
 
