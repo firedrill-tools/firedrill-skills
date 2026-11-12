@@ -17,7 +17,7 @@ Five separate things. Doing one does not do any other.
 Installation (for the user to run, or for you to run only when the user asks):
 
 ```sh
-npx skills add firedrill-tools/firedrill-skills --skill firedrill
+npx skills add firedrill-tools/firedrill-skills
 ```
 
 - Scope: project by default (installed into the project's agent skills directory,

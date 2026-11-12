@@ -5,7 +5,7 @@ simulation engine, credentials, automatic login, hooks or MCP server.
 Installing it runs no agent, uploads no source and reserves no resources.
 
 Use this plugin **or** the portable skill install
-(`npx skills add firedrill-tools/firedrill-skills --skill firedrill`), not both.
+(`npx skills add firedrill-tools/firedrill-skills`), not both.
 
 ## Claude Code
 

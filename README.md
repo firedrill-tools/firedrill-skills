@@ -13,7 +13,7 @@ MCP server or runtime, and installing it runs nothing.
 ## Install the skill
 
 ```sh
-npx skills add firedrill-tools/firedrill-skills --skill firedrill
+npx skills add firedrill-tools/firedrill-skills
 ```
 
 - Installs into the project by default. Add `-g` for a global install.
