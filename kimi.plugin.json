@@ -1,7 +1,7 @@
 {
   "name": "firedrill",
-  "version": "2.2.2",
-  "description": "Run and inspect real agent simulations, or author private synthetic dependencies, using Firedrill.",
+  "version": "3.0.0",
+  "description": "Set up Firedrill and run simulations of your AI agent with synthetic users, tools and scenarios.",
   "author": {
     "name": "Firedrill"
   },
@@ -9,7 +9,7 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Firedrill",
-    "shortDescription": "Simulate agents and inspect retained evidence",
+    "shortDescription": "Simulate your AI agent before production",
     "developerName": "Firedrill"
   }
 }

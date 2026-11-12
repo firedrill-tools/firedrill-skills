@@ -1,4 +1,13 @@
 interface:
   display_name: "Firedrill"
-  short_description: "Run and inspect bounded agent simulations"
-  default_prompt: "Use $firedrill to simulate this application across useful scenarios and show the retained evidence."
+  short_description: "Drill your agent against synthetic users, hosted tools and worlds"
+  default_prompt: "Use $firedrill to inspect this project, plan a drill for its agent with my approval, run it and explain the report."
+policy:
+  allow_implicit_invocation: true
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "firedrill"
+      description: "Firedrill remote MCP (optional; cloud authoring, apply, watch and inspect)"
+      transport: "streamable_http"
+      url: "https://mcp.firedrill.run"

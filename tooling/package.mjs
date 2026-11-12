@@ -60,8 +60,8 @@ put("plugins/firedrill/.cursor-plugin/plugin.json", json({ name: manifest.name, 
   author: { name: "Firedrill" }, homepage: "https://firedrill.run", repository: "https://github.com/firedrill-tools/firedrill-skills", skills: "./skills/" }));
 put("plugins/firedrill/kimi.plugin.json", json({ name: manifest.name, version: manifest.version, description: manifest.description,
   author: { name: "Firedrill" }, homepage: "https://firedrill.run", skills: "./skills/",
-  interface: { displayName: "Firedrill", shortDescription: "Simulate agents and inspect retained evidence", developerName: "Firedrill" } }));
-const skills = ["firedrill", "firedrill-service-authoring"];
+  interface: { displayName: "Firedrill", shortDescription: "Simulate your AI agent before production", developerName: "Firedrill" } }));
+const skills = ["firedrill"];
 function copy(directory, target) {
   if (lstatSync(directory).isSymbolicLink() || realpathSync(directory) !== directory) fail("skill directory is not a real directory");
   for (const entry of readdirSync(directory, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
@@ -73,16 +73,6 @@ function copy(directory, target) {
 }
 for (const skill of skills) copy(join(inputRoot, "skills", skill), `plugins/firedrill/skills/${skill}`);
 put("plugins/firedrill/assets/firedrill-icon.svg", read(join(inputRoot, "assets/firedrill-icon.svg")));
-// Individual skills.sh installs must retain the authoring reference closure.
-// Canonical guidance is maintained once; exported authoring copies are exact.
-for (const name of ["authoring.md", "services.md"]) {
-  const target = `plugins/firedrill/skills/firedrill-service-authoring/references/${name}`;
-  if (!files.has(target)) put(target, read(join(inputRoot, "skills/firedrill/references", name)));
-}
-const authoringPath = "plugins/firedrill/skills/firedrill-service-authoring/SKILL.md";
-const authoringText = readFileSync(join(stage, authoringPath), "utf8").replaceAll("../firedrill/references/", "references/");
-writeFileSync(join(stage, authoringPath), authoringText, { mode: 0o600 });
-files.set(authoringPath, { path: authoringPath, sha256: digest(Buffer.from(authoringText)), bytes: Buffer.byteLength(authoringText) });
 for (const skill of skills) {
   const target = `plugins/firedrill/skills/${skill}/LICENSE.md`;
   if (!files.has(target)) put(target, read(licensePath));
@@ -104,9 +94,9 @@ for (const [path] of files) if (path.endsWith(".md")) {
 put(".agents/plugins/marketplace.json", json({ name: "firedrill-local", interface: { displayName: "Firedrill" },
   plugins: [{ name: "firedrill", source: { source: "local", path: "./plugins/firedrill" },
     policy: { installation: "AVAILABLE", authentication: "ON_INSTALL" }, category: "Productivity" }] }));
-put(".claude-plugin/marketplace.json", json({ name: "firedrill-local", description: "Firedrill skills for running agent simulations and authoring synthetic dependencies.", owner: { name: "Firedrill" },
+put(".claude-plugin/marketplace.json", json({ name: "firedrill-local", description: "Firedrill skill for simulating AI agents.", owner: { name: "Firedrill" },
   plugins: [{ name: "firedrill", source: "./plugins/firedrill", description: manifest.description }] }));
-put(".cursor-plugin/marketplace.json", json({ name: "firedrill-local", description: "Firedrill skills for running agent simulations and authoring synthetic dependencies.", owner: { name: "Firedrill" },
+put(".cursor-plugin/marketplace.json", json({ name: "firedrill-local", description: "Firedrill skill for simulating AI agents.", owner: { name: "Firedrill" },
   plugins: [{ name: "firedrill", source: "./plugins/firedrill", description: manifest.description }] }));
 put("kimi-marketplace.json", json({ version: "2", plugins: [{ id: "firedrill", displayName: "Firedrill", source: "./plugins/firedrill" }] }));
 put("README.md", read(join(inputRoot, "PLUGIN.md")));

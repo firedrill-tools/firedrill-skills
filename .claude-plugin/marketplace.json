@@ -1,6 +1,6 @@
 {
   "name": "firedrill",
-  "description": "Firedrill skills for running agent simulations and authoring synthetic dependencies.",
+  "description": "Firedrill skill for simulating AI agents.",
   "owner": {
     "name": "Firedrill"
   },
@@ -8,7 +8,7 @@
     {
       "name": "firedrill",
       "source": "./",
-      "description": "Run and inspect real agent simulations, or author private synthetic dependencies, using Firedrill."
+      "description": "Set up Firedrill and run simulations of your AI agent with synthetic users, tools and scenarios."
     }
   ]
 }

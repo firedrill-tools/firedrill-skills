@@ -1,15 +1,15 @@
 {
   "name": "firedrill",
-  "version": "2.2.2",
-  "description": "Run and inspect real agent simulations, or author private synthetic dependencies, using Firedrill.",
+  "version": "3.0.0",
+  "description": "Set up Firedrill and run simulations of your AI agent with synthetic users, tools and scenarios.",
   "author": {
     "name": "Firedrill"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Firedrill",
-    "shortDescription": "Simulate agents with evidence",
-    "longDescription": "Prepare agent simulations, manage synthetic dependencies and inspect retained evidence through Firedrill's authenticated remote MCP. Running the customer's actual application requires a separately authorized customer-owned CLI or SDK runner. These skills contain instructions, not an execution runtime or account credentials; remote admission never launches code on the customer's machine.",
+    "shortDescription": "Simulate your AI agent before production",
+    "longDescription": "Instructions for coding agents to set up Firedrill, register the user's AI agent, build its synthetic world, run drills on the user's machine and read the reports. The skill contains instructions only: no credentials, MCP server or runtime. Drills need the Firedrill CLI (npm package firedrill-run); the remote MCP server at https://mcp.firedrill.run is optional.",
     "developerName": "Firedrill",
     "category": "Productivity",
     "capabilities": [],
@@ -17,7 +17,7 @@
     "logo": "./assets/firedrill-icon.svg",
     "websiteURL": "https://firedrill.run",
     "defaultPrompt": [
-      "Use Firedrill to simulate this application across useful scenarios and show the retained evidence."
+      "Use Firedrill to simulate the agent in this repository. Show me the plan before running anything."
     ]
   },
   "requires_local_executor": false
