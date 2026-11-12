@@ -14,6 +14,10 @@ Five separate things. Doing one does not do any other.
 
 ## 1. The skill
 
+The skill is published in `firedrill-tools/firedrill-skills`, including the
+verified `v3.0.0` tag. The install below uses its current default branch.
+Installing instructions does not authorize an account, process or cloud action.
+
 Installation (for the user to run, or for you to run only when the user asks):
 
 ```sh
@@ -36,16 +40,26 @@ npx skills add firedrill-tools/firedrill-skills
   the `skills/firedrill/` folder (SKILL.md and `references/`) into that client's
   skills or instructions location. Never overwrite another skill or setting.
 
-Some clients can also install a thin Firedrill plugin that packages this same skill
-and the remote MCP address. It grants no extra permission. Update or remove it
-with the client's own plugin commands. Removing it removes the plugin's skill copy
-and MCP entry, not the Firedrill account or any cloud resource.
+Some clients can also install a thin Firedrill plugin that packages this same
+skill and its references. It does not register MCP or install the CLI, and grants
+no extra permission. Use the plugin or the skill install above, not both. Update
+or remove it with the client's own plugin commands. Removing it removes the
+plugin's skill copy only, not a separate MCP connection, the Firedrill account or
+any cloud resource.
 
 ## 2. The CLI
 
 Check with `firedrill status --json`. If `firedrill` is not found, tell the user
 and point them to the CLI installation instructions on the Firedrill website. Do
-not install it, change PATH or pick a package on your own.
+not install it or change PATH on your own. The published npm package is
+`firedrill-run`; its executable is `firedrill`. When the user asks to install:
+
+```sh
+npm install --global firedrill-run
+firedrill init
+```
+
+Without a global install, `npx firedrill-run init` starts the same setup.
 
 - Requirements: Node.js `>=22.23.4 <23` on macOS, Windows or Linux.
 - Authentication and cloud commands support Windows. Local runner enrollment currently
@@ -67,8 +81,10 @@ credential store. It uploads nothing and makes no model call.
 - It prints a verification URL and code. The human opens it and approves. JSON
   mode does not open a browser unless the human explicitly chose `--open`.
   With `--no-browser`, relay the URL and code to the human.
-- If the human denies, the code expires, or the CLI is told to slow down, report
-  that exact state. Start a new login only when the human wants to.
+- If the human denies or the code expires, report that exact terminal state.
+  During a rate-refusal wait the CLI keeps checking the same authorization at
+  the permitted interval. Do not start another login to bypass a wait. Start a
+  new login only when the human wants to after the original has ended.
 - Workspace: reuse the current one. Ask only when the human belongs to several and
   the right one is unclear. Never create a new organization to get past an error.
 - `firedrill login` and `firedrill signup` run the same device authorization
@@ -136,6 +152,12 @@ Credential storage:
   enrolls a runner for the session whose key also lives only in memory (with the
   human's consent), so drills run without an OS store.
 - Keep `firedrill init --session-only` open while other commands use that sign-in.
+  If it prints `init_pending` and `companion_running`, account authorization is
+  retained but workspace setup is not complete. Keep that original companion
+  open; use `firedrill workspace list --session-only --json` in another terminal,
+  select an actually authorized workspace with `workspace use <id>`, then read
+  `firedrill status --session-only --json`. Do not start another init or treat
+  `command_phase_complete` as initialized workspace access.
   Login is not runner enrollment: cloud-only operations need no enrolled device;
   local `run` needs its separate runner identity and explicit enrollment consent.
 - There is no plaintext file fallback. If secure storage is unavailable the CLI
@@ -184,6 +206,9 @@ registration for the human.
   cannot reach any workspace. The human completes the claim/consent step. Never
   report registration as complete before that.
 - The MCP server accepts only short-lived access tokens for its exact address.
+  During the guide's assertion exchange, set `RESOURCE="https://mcp.firedrill.run"`
+  and include that resource in the token request. The default application
+  audience is not accepted by MCP.
   It does not accept identity assertions or durable registration keys. Keep claim
   handles and tokens in the client's private credential store, never in chat,
   files, URLs or logs.

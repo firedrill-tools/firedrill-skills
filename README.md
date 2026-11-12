@@ -27,7 +27,7 @@ Clients without skills CLI support can copy `skills/firedrill/` (SKILL.md and
 ## Install the CLI
 
 Drills run through the Firedrill CLI (npm package `firedrill-run`, command
-`firedrill`). It needs Node.js 22.
+`firedrill`). It requires Node.js `>=22.23.4 <23`.
 
 ```sh
 npm install -g firedrill-run
