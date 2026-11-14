@@ -27,15 +27,19 @@ Clients without skills CLI support can copy `skills/firedrill/` (SKILL.md and
 ## Install the CLI
 
 Drills run through the Firedrill CLI (npm package `firedrill-run`, command
-`firedrill`). It requires Node.js `>=22.23.4 <23`.
+`firedrill`). It requires Node.js `>=22.23.4 <23 || >=24.11.1 <25 ||
+>=26.13.1 <27`.
 
 ```sh
 npm install -g firedrill-run
 firedrill init
 ```
 
-Or without a global install: `npx firedrill-run init`. `firedrill init` signs
-you in through a browser device flow.
+Or without a global install: `npx firedrill-run init`. `npx` does not install a
+global `firedrill` command, so keep the `npx firedrill-run` prefix on later
+commands. `init` signs you in through a browser device flow. A coding agent
+runs it once with `--json --no-browser`, relays the link and code, and keeps
+that process running until the person approves.
 
 ## Remote MCP (optional)
 

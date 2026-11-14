@@ -59,9 +59,15 @@ npm install --global firedrill-run
 firedrill init
 ```
 
-Without a global install, `npx firedrill-run init` starts the same setup.
+Without a global install, `npx firedrill-run init` starts the same setup. `npx` does
+not install a global `firedrill` command, so every later command keeps the prefix
+(`npx firedrill-run status --json`). Bare `firedrill` works only after the global
+install; never assume it exists because an `npx` command succeeded.
 
-- Requirements: Node.js `>=22.23.4 <23` on macOS, Windows or Linux.
+- Requirements: Node.js `>=22.23.4 <23 || >=24.11.1 <25 || >=26.13.1 <27` on
+  macOS, Windows or Linux. Other versions, including 23 and 25, are refused.
+  This is the CLI's own runtime range; it does not promise that a target
+  driver or the user's agent supports the same versions.
 - Authentication and cloud commands support Windows. Local runner enrollment currently
   requires macOS or Linux on arm64 or x64 (`runner_host_unsupported` on other hosts).
   Do not treat successful Windows sign-in as local execution support.
@@ -81,6 +87,9 @@ credential store. It uploads nothing and makes no model call.
 - It prints a verification URL and code. The human opens it and approves. JSON
   mode does not open a browser unless the human explicitly chose `--open`.
   With `--no-browser`, relay the URL and code to the human.
+- As an agent, run `init --json --no-browser` once and keep that original
+  process running until the human approves, denies or the code expires. Never
+  start a second `init`, with or without `npx`, while the first is pending.
 - If the human denies or the code expires, report that exact terminal state.
   During a rate-refusal wait the CLI keeps checking the same authorization at
   the permitted interval. Do not start another login to bypass a wait. Start a
