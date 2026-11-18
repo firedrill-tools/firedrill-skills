@@ -1,6 +1,6 @@
 {
   "name": "firedrill",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Set up Firedrill and run simulations of your AI agent with synthetic users, tools and scenarios.",
   "author": {
     "name": "Firedrill"
