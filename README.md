@@ -26,6 +26,10 @@ Clients without skills CLI support can copy `skills/firedrill/` (SKILL.md and
 
 ## Install the CLI
 
+New to Firedrill? [Create your first workspace in the web app](https://app.firedrill.run/signin)
+before connecting the CLI or MCP. No card is required. If you already have a
+workspace, reuse it.
+
 Drills run through the Firedrill CLI (npm package `firedrill-run`, command
 `firedrill`). It requires Node.js `>=22.23.4 <23 || >=24.11.1 <25 ||
 >=26.13.1 <27`.
