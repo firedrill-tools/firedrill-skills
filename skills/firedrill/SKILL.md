@@ -56,11 +56,12 @@ instances. See `references/custom-tools.md` for that handoff.
 
 1. **Check access.** Run `firedrill status --json`. If the CLI is missing, tell the
    user; do not install software they did not ask for. If not signed in, run
-   `firedrill init` (see setup reference) and let the human complete the browser
-   step; it also starts account creation for someone without an account. Reuse the
-   existing workspace; ask only when membership is ambiguous. With no workspace at
-   all, `firedrill workspace create` needs the human's own approval of its name,
-   terms and privacy policy.
+   `firedrill init` (see setup reference) and let the human authorize it. Reuse
+   the existing workspace; ask only when membership is ambiguous. If this is
+   their first workspace, send them to the
+   [Firedrill portal](https://app.firedrill.run/signin) to set it up before
+   terminal or MCP authorization. Check any unresolved workspace request before
+   creating another. The human reviews and accepts the terms and privacy policy.
 2. **Inspect the project.** Find the entrypoint, the interface the agent really
    exposes, the services it needs, its dependencies (APIs, MCP servers, SDK
    clients), how it authenticates users, and every place it keeps state.
