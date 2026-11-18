@@ -14,8 +14,8 @@ Five separate things. Doing one does not do any other.
 
 ## 1. The skill
 
-The skill is published in `firedrill-tools/firedrill-skills`, including the
-verified `v3.0.0` tag. The install below uses its current default branch.
+The skill is published in `firedrill-tools/firedrill-skills`. The install
+below uses its current default branch. Tagged releases are also available.
 Installing instructions does not authorize an account, process or cloud action.
 
 Installation (for the user to run, or for you to run only when the user asks):
@@ -105,7 +105,22 @@ credential store. It uploads nothing and makes no model call.
   industry, country), and `onboarding open` opens it in the browser. Those fields
   can be skipped. Never fill them in or submit them for the human.
 
-### Creating a workspace from the terminal
+### Setting up a first workspace
+
+Send the human to the [Firedrill portal](https://app.firedrill.run/signin) to
+create their first workspace. They review its name, terms and privacy policy.
+Do not accept on their behalf. If creation was attempted already and its
+result is unknown, check that original request before starting another.
+Once the workspace is ready, run `firedrill workspace list --json` and select
+it with `firedrill workspace use <id> --json`. For a session-only companion,
+pass `--session-only` to both commands. If the current sign-in belongs to
+another organization, the person must authorize the intended organization.
+
+### Terminal creation on a supported release
+
+Use terminal creation only when both the installed CLI and the target platform
+support it. Public CLI 3.0.5 cannot complete this flow; use portal setup above.
+An existing terminal request can still be read using its original request key.
 
 Only when the human has no workspace and asks for one, or agrees to create one.
 
