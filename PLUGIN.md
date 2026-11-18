@@ -31,6 +31,9 @@ plugin for those clients' local marketplace installs.
 
 ## What else you need
 
+If you are new to Firedrill, [create your first workspace in the web app](https://app.firedrill.run/signin).
+No card is required. Reuse that workspace when authorizing the CLI and MCP.
+
 - **Firedrill CLI** to run drills on your machine: `npm install -g firedrill-run`,
   then `firedrill init` to sign in.
 - **Remote MCP** (optional) at `https://mcp.firedrill.run`, added with your
